@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { AppProps } from 'next/app';
 import { getCookie, setCookies } from 'cookies-next';
 import Head from 'next/head';
-import { MantineProvider, ColorScheme, ColorSchemeProvider } from '@mantine/core';
+import { MantineProvider, ColorScheme, ColorSchemeProvider, Container } from '@mantine/core';
 import { NotificationsProvider } from '@mantine/notifications';
 import { getUser, supabaseClient } from '@supabase/supabase-auth-helpers/nextjs';
 import { useRouter } from 'next/router';
@@ -36,7 +36,9 @@ export default function App(props: AppProps & { colorScheme: ColorScheme; user?:
           <NotificationsProvider>
             <UserProvider supabaseClient={supabaseClient} pathname={pathname} user={user}>
               <HeaderContainer />
-              <Component {...pageProps} />
+              <Container>
+                <Component {...pageProps} />
+              </Container>
             </UserProvider>
           </NotificationsProvider>
         </MantineProvider>

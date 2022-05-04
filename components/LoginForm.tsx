@@ -1,0 +1,64 @@
+﻿import { Button, Container, Paper, TextInput, Title } from '@mantine/core';
+import { useForm, zodResolver } from '@mantine/form';
+import { z } from 'zod';
+
+export interface LoginFormEntity {
+  email?: string;
+}
+
+interface LoginFormProps {
+  onSubmit: (form: LoginFormEntity) => Promise<void>;
+}
+
+const schema = z.object({
+  email: z.string().email(),
+});
+
+export default function LoginForm({ onSubmit }: LoginFormProps) {
+  const form = useForm<LoginFormEntity>({
+    initialValues: {
+      email: '',
+    },
+    schema: zodResolver(schema),
+  });
+  return (
+    <Container size={420} my={40}>
+      <Title
+        align="center"
+        sx={(theme) => ({ fontFamily: `Greycliff CF, ${theme.fontFamily}`, fontWeight: 900 })}
+      >
+        Welcome back!
+      </Title>
+      {/*
+          <Text color="dimmed" size="sm" align="center" mt={5}>
+            Do not have an account yet?{' '}
+            <Anchor<'a'> href="#" size="sm" onClick={(event) => event.preventDefault()}>
+              Create account
+            </Anchor>
+          </Text>
+        */}
+
+      <Paper withBorder shadow="md" p={30} mt={30} radius="md">
+        <form onSubmit={form.onSubmit(onSubmit)}>
+          <TextInput
+            label="Email"
+            placeholder="your@email.com"
+            required
+            {...form.getInputProps('email')}
+          />
+          {/*<Group position="apart" mt="md">
+            <Checkbox label="Remember me" />
+
+              <Anchor<'a'> onClick={(event) => event.preventDefault()} href="#" size="sm">
+                Forgot password?
+              </Anchor>
+
+          </Group>*/}
+          <Button fullWidth mt="xl" type="submit">
+            Sign in
+          </Button>
+        </form>
+      </Paper>
+    </Container>
+  );
+}
