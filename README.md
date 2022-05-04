@@ -1,8 +1,6 @@
-# Mantine Next Template
+# Supabase Mantine Next Template
 
-Get started with Mantine + Next with just a few button clicks.
-Click `Use this template` button at the header of repository or [follow this link](https://github.com/mantinedev/mantine-next-template/generate) and
-create new repository with `@mantine` packages. Note that you have to be logged in to GitHub to generate template.
+Based on [mantinedev/mantine-next-template](https://github.com/mantinedev/mantine-next-template)
 
 ## Features
 
@@ -13,6 +11,7 @@ This template comes with several essential features:
 - Storybook with color scheme toggle
 - Jest with react testing library
 - ESLint setup with [eslint-config-mantine](https://github.com/mantinedev/eslint-config-mantine)
+- Supabase connexion with UserProvider
 
 ## npm scripts
 
