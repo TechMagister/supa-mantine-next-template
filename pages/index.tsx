@@ -1,18 +1,24 @@
-import React from 'react';
+import { NextPage } from 'next';
+import { useRouter } from 'next/router';
+import { useUser } from '../components/UserProvider';
 
-import Header from '../components/Header/Header';
-import { useAuth } from '../hooks/useAuth';
-import { useProfile } from '../hooks/useProfile';
+interface HomePageProps {}
 
-export default function HomePage() {
-  const { user } = useAuth();
-  const { profile, fetching } = useProfile();
+const HomePage: NextPage<HomePageProps> = () => {
+  const { user } = useUser();
+  const router = useRouter();
 
   return (
-    <>
-      {user && !fetching
-      && profile
-      && <Header user={{ name: profile.username, image: profile.avatar_url }} />}
-    </>
+    (user && (
+      <>
+        <button type="button" onClick={() => router.replace('/api/auth/logout')}>
+          Sign out
+        </button>
+        <p>user:</p>
+        <pre>{JSON.stringify(user, null, 2)}</pre>
+      </>
+    )) || <></>
   );
-}
+};
+
+export default HomePage;

@@ -1,18 +1,7 @@
 import React, { useState } from 'react';
-import {
-  Paper,
-  createStyles,
-  TextInput,
-  PasswordInput,
-  Checkbox,
-  Button,
-  Title,
-  Text,
-  Anchor,
-} from '@mantine/core';
+import { Paper, createStyles, TextInput, Button, Title, Text, Anchor } from '@mantine/core';
 import { useForm } from '@mantine/form';
-
-import { supabase } from '../../utils/supabaseClient';
+import { supabaseClient } from '@supabase/supabase-auth-helpers/nextjs';
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -51,13 +40,18 @@ const useStyles = createStyles((theme) => ({
 
 export default function LoginPage() {
   const { classes } = useStyles();
-  const [loading, setLoading] = useState(false);
-  const form = useForm({ initialValues: { email: '' } });
+  const [isLoading, setLoading] = useState(false);
+  const form = useForm({
+    initialValues: { email: '' },
+    validate: {
+      email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
+    },
+  });
 
-  const handleLogin = async ({ email } : { email: string }) => {
+  const handleLogin = async ({ email }: { email: string }) => {
     try {
       setLoading(true);
-      const { error } = await supabase.auth.signIn({ email });
+      const { error } = await supabaseClient.auth.signIn({ email });
       if (error) throw error;
       alert('Check your email for the login link!');
     } catch (error) {
@@ -74,11 +68,14 @@ export default function LoginPage() {
           Welcome back to Mantine!
         </Title>
 
-        <form onSubmit={() => form.onSubmit(handleLogin)}>
-          <TextInput type="email" label="Email address" placeholder="hello@gmail.com" size="md" required />
-          <PasswordInput label="Password" placeholder="Your password" mt="md" size="md" />
-          <Checkbox label="Keep me logged in" mt="xl" size="md" />
-          <Button fullWidth mt="xl" size="md">
+        <form onSubmit={form.onSubmit(handleLogin)}>
+          <TextInput
+            required
+            label="Email"
+            placeholder="your@email.com"
+            {...form.getInputProps('email')}
+          />
+          <Button fullWidth mt="xl" size="md" disabled={isLoading} type="submit">
             Login
           </Button>
         </form>

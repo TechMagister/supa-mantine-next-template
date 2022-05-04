@@ -5,13 +5,16 @@ import { getCookie, setCookies } from 'cookies-next';
 import Head from 'next/head';
 import { MantineProvider, ColorScheme, ColorSchemeProvider } from '@mantine/core';
 import { NotificationsProvider } from '@mantine/notifications';
-import { Provider } from 'react-supabase';
+import { getUser, supabaseClient } from '@supabase/supabase-auth-helpers/nextjs';
+import { useRouter } from 'next/router';
+import { User } from '@supabase/supabase-js';
 
-import { supabase } from '../utils/supabaseClient';
-import AuthProvider from '../components/AuthProvider';
+import { UserProvider } from '../components/UserProvider';
+import HeaderContainer from '../containers/HeaderContainer';
 
-export default function App(props: AppProps & { colorScheme: ColorScheme }) {
-  const { Component, pageProps } = props;
+export default function App(props: AppProps & { colorScheme: ColorScheme; user?: User }) {
+  const { Component, pageProps, user } = props;
+  const { pathname } = useRouter();
   const [colorScheme, setColorScheme] = useState<ColorScheme>(props.colorScheme);
 
   const toggleColorScheme = (value?: ColorScheme) => {
@@ -31,11 +34,10 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
       <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
         <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
           <NotificationsProvider>
-            <Provider value={supabase}>
-              <AuthProvider>
-                <Component {...pageProps} />
-              </AuthProvider>
-            </Provider>
+            <UserProvider supabaseClient={supabaseClient} pathname={pathname} user={user}>
+              <HeaderContainer />
+              <Component {...pageProps} />
+            </UserProvider>
           </NotificationsProvider>
         </MantineProvider>
       </ColorSchemeProvider>
@@ -43,6 +45,10 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   );
 }
 
-App.getInitialProps = ({ ctx }: { ctx: GetServerSidePropsContext }) => ({
-  colorScheme: getCookie('mantine-color-scheme', ctx) || 'light',
-});
+App.getInitialProps = async ({ ctx }: { ctx: GetServerSidePropsContext }) => {
+  const { user } = await getUser(ctx);
+  return {
+    colorScheme: getCookie('mantine-color-scheme', ctx) || 'light',
+    user,
+  };
+};
