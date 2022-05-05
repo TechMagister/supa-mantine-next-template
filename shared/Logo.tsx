@@ -6,7 +6,7 @@ interface MantineLogoProps extends React.ComponentPropsWithoutRef<'svg'> {
   width?: number;
 }
 
-export function MantineLogo({ variant = 'default', width = 110, ...others }: MantineLogoProps) {
+export function Logo({ variant = 'default', width = 110, ...others }: MantineLogoProps) {
   const theme = useMantineTheme();
   return (
     <svg {...others} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 623 163" width={width}>

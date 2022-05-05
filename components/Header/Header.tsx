@@ -3,7 +3,8 @@ import { Container, Avatar, UnstyledButton, Group, Text, Menu, Burger } from '@m
 import { useBooleanToggle } from '@mantine/hooks';
 import { Logout, ChevronDown } from 'tabler-icons-react';
 import { User } from '@supabase/supabase-js';
-import { MantineLogo } from '../../shared/MantineLogo';
+import { useTranslation } from 'next-i18next';
+import { Logo } from '../../shared/Logo';
 
 import useStyles from './Header.styles';
 
@@ -13,6 +14,7 @@ interface HeaderTabsProps {
 }
 
 export default function Header({ user, onLogout }: HeaderTabsProps) {
+  const { t } = useTranslation();
   const { classes, cx } = useStyles();
   const [opened, toggleOpened] = useBooleanToggle(false);
   const [userMenuOpened, setUserMenuOpened] = useState(false);
@@ -21,7 +23,7 @@ export default function Header({ user, onLogout }: HeaderTabsProps) {
     <div className={classes.header}>
       <Container className={classes.mainSection}>
         <Group position="apart">
-          <MantineLogo />
+          <Logo />
 
           <Burger
             opened={opened}
@@ -68,7 +70,7 @@ export default function Header({ user, onLogout }: HeaderTabsProps) {
               <Menu.Item icon={<SwitchHorizontal size={14} />}>Change account</Menu.Item>
             */}
               <Menu.Item icon={<Logout size={14} />} onClick={onLogout}>
-                Logout
+                {t('login.signOut')}
               </Menu.Item>
 
               {/*<Divider />
