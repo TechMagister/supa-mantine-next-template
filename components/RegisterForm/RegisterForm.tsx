@@ -1,11 +1,11 @@
 ﻿import { useTranslation } from 'next-i18next';
 import { FC } from 'react';
 import { useForm, zodResolver } from '@mantine/form';
-import { Anchor, Button, Group, Paper, PasswordInput, TextInput } from '@mantine/core';
+import { Anchor, Button, Group, Paper, PaperProps, PasswordInput, TextInput } from '@mantine/core';
 import { registerFormSchema } from '../../shared/schema/registerForm';
 
 interface RegisterFormProps {
-  onSubmit: (form: RegisterFormEntity) => Promise<void>;
+  onRegister: (form: RegisterFormEntity) => Promise<void>;
   onGoToLogin: () => void;
 }
 
@@ -14,7 +14,8 @@ export interface RegisterFormEntity {
   password: string;
 }
 
-const RegisterForm: FC<RegisterFormProps> = ({ onSubmit, onGoToLogin }) => {
+const RegisterForm: FC<RegisterFormProps & PaperProps<'div'>> = (props) => {
+  const { onRegister, onGoToLogin, ...paperProps } = props;
   const { t } = useTranslation('common');
   const form = useForm<RegisterFormEntity>({
     initialValues: {
@@ -23,9 +24,10 @@ const RegisterForm: FC<RegisterFormProps> = ({ onSubmit, onGoToLogin }) => {
     },
     schema: zodResolver(registerFormSchema),
   });
+
   return (
-    <Paper radius="md" p="xl" withBorder>
-      <form onSubmit={form.onSubmit(onSubmit)}>
+    <Paper radius="md" p="xl" withBorder {...paperProps}>
+      <form onSubmit={form.onSubmit(onRegister)}>
         <TextInput
           required
           label={t('login.fields.email.label')}

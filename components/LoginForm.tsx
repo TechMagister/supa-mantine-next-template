@@ -41,7 +41,7 @@ export default function LoginForm({ onSubmit }: LoginFormProps) {
         */}
 
       <Paper withBorder shadow="md" p={30} mt={30} radius="md">
-        <form onSubmit={form.onSubmit(onSubmit)}>
+        <form onRegister={form.onSubmit(onSubmit)}>
           <TextInput
             label={t('login.fields.email.label')}
             placeholder={t('login.fields.email.placeholder')}

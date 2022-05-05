@@ -2,5 +2,5 @@
 
 export const registerFormSchema = z.object({
   email: z.string().email(),
-  password: z.string().min(5).regex(/\w/).regex(/\d/),
+  password: z.string().min(6).regex(/\w/).regex(/\d/),
 });
