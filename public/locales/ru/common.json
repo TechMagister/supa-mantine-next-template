@@ -1,0 +1,9 @@
+﻿{
+  "login": {
+    "welcome": "Welcome back!",
+    "signOut": "Sign out",
+    "magicLink": {
+      "postLoginModal": "Check your email for the login link!"
+    }
+  }
+}

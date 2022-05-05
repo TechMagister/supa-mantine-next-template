@@ -1,0 +1,16 @@
+﻿{
+  "login": {
+    "welcome": "Welcome back!",
+    "signOut": "Sign out",
+    "signIn": "Sign in",
+    "fields": {
+      "email": {
+        "label": "Email",
+        "placeholder": "your@email.com"
+      }
+    },
+    "magicLink": {
+      "postLoginModal": "Check your email for the login link!"
+    }
+  }
+}

@@ -12,6 +12,7 @@ This template comes with several essential features:
 - Jest with react testing library
 - ESLint setup with [eslint-config-mantine](https://github.com/mantinedev/eslint-config-mantine)
 - Supabase connexion with UserProvider
+- i18n support (with SSR)
 
 ## npm scripts
 

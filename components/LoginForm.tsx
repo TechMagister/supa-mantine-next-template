@@ -1,6 +1,7 @@
 ﻿import { Button, Container, Paper, TextInput, Title } from '@mantine/core';
 import { useForm, zodResolver } from '@mantine/form';
 import { z } from 'zod';
+import { useTranslation } from 'next-i18next';
 
 export interface LoginFormEntity {
   email?: string;
@@ -15,6 +16,7 @@ const schema = z.object({
 });
 
 export default function LoginForm({ onSubmit }: LoginFormProps) {
+  const { t } = useTranslation('common');
   const form = useForm<LoginFormEntity>({
     initialValues: {
       email: '',
@@ -27,7 +29,7 @@ export default function LoginForm({ onSubmit }: LoginFormProps) {
         align="center"
         sx={(theme) => ({ fontFamily: `Greycliff CF, ${theme.fontFamily}`, fontWeight: 900 })}
       >
-        Welcome back!
+        {t('login.welcome')}
       </Title>
       {/*
           <Text color="dimmed" size="sm" align="center" mt={5}>
@@ -41,8 +43,8 @@ export default function LoginForm({ onSubmit }: LoginFormProps) {
       <Paper withBorder shadow="md" p={30} mt={30} radius="md">
         <form onSubmit={form.onSubmit(onSubmit)}>
           <TextInput
-            label="Email"
-            placeholder="your@email.com"
+            label={t('login.fields.email.label')}
+            placeholder={t('login.fields.email.placeholder')}
             required
             {...form.getInputProps('email')}
           />
@@ -55,7 +57,7 @@ export default function LoginForm({ onSubmit }: LoginFormProps) {
 
           </Group>*/}
           <Button fullWidth mt="xl" type="submit">
-            Sign in
+            {t('login.signIn')}
           </Button>
         </form>
       </Paper>

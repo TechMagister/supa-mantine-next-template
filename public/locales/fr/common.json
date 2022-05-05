@@ -1,0 +1,16 @@
+﻿{
+  "login": {
+    "welcome": "Bienvenue",
+    "signOut": "Déconnexion",
+    "signIn": "Connexion",
+    "fields": {
+      "email": {
+        "label": "Email",
+        "placeholder": "votre@email.com"
+      }
+    },
+    "magicLink": {
+      "postLoginModal": "Vérifiez votre boite mail pour récupérer le lien de login."
+    }
+  }
+}

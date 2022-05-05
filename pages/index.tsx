@@ -1,9 +1,11 @@
 import { LoadingOverlay, Modal } from '@mantine/core';
-import { NextPage } from 'next';
+import { GetStaticProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { supabaseClient } from '@supabase/supabase-auth-helpers/nextjs';
 import { useState } from 'react';
 import { showNotification } from '@mantine/notifications';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslation } from 'next-i18next';
 import { useUser } from '../components/UserProvider';
 import LoginForm, { LoginFormEntity } from '../components/LoginForm';
 
@@ -11,6 +13,7 @@ interface HomePageProps {}
 
 const HomePage: NextPage<HomePageProps> = () => {
   const { user } = useUser();
+  const { t } = useTranslation('common');
   const [isLoading, setLoading] = useState(false);
   const [isModalOpened, setIsModalOpened] = useState(false);
   const router = useRouter();
@@ -38,7 +41,7 @@ const HomePage: NextPage<HomePageProps> = () => {
     return (
       <>
         <Modal opened={isModalOpened} onClose={() => setIsModalOpened(false)}>
-          Check your email for the login link!
+          {t('login.magicLink.postLoginModal')}
         </Modal>
         <LoadingOverlay visible={isLoading} />
         <LoginForm onSubmit={onSubmit} />
@@ -50,7 +53,7 @@ const HomePage: NextPage<HomePageProps> = () => {
     (user && (
       <>
         <button type="button" onClick={() => router.replace('/api/auth/logout')}>
-          Sign out
+          {t('login.signOut')}
         </button>
         <p>user:</p>
         <pre>{JSON.stringify(user, null, 2)}</pre>
@@ -58,5 +61,11 @@ const HomePage: NextPage<HomePageProps> = () => {
     )) || <></>
   );
 };
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => ({
+  props: {
+    ...(await serverSideTranslations(locale || 'en', ['common'])),
+  },
+});
 
 export default HomePage;

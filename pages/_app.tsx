@@ -8,11 +8,11 @@ import { NotificationsProvider } from '@mantine/notifications';
 import { getUser, supabaseClient } from '@supabase/supabase-auth-helpers/nextjs';
 import { useRouter } from 'next/router';
 import { User } from '@supabase/supabase-js';
-
+import { appWithTranslation } from 'next-i18next';
 import { UserProvider } from '../components/UserProvider';
 import HeaderContainer from '../containers/HeaderContainer';
 
-export default function App(props: AppProps & { colorScheme: ColorScheme; user?: User }) {
+function MyApp(props: AppProps & { colorScheme: ColorScheme; user?: User }) {
   const { Component, pageProps, user } = props;
   const { pathname } = useRouter();
   const [colorScheme, setColorScheme] = useState<ColorScheme>(props.colorScheme);
@@ -47,10 +47,12 @@ export default function App(props: AppProps & { colorScheme: ColorScheme; user?:
   );
 }
 
-App.getInitialProps = async ({ ctx }: { ctx: GetServerSidePropsContext }) => {
+MyApp.getServerSideProps = async ({ ctx }: { ctx: GetServerSidePropsContext }) => {
   const { user } = await getUser(ctx);
   return {
     colorScheme: getCookie('mantine-color-scheme', ctx) || 'light',
     user,
   };
 };
+
+export default appWithTranslation(MyApp);
