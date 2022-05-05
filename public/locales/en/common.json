@@ -1,12 +1,18 @@
 ﻿{
   "login": {
+    "alreadyHaveAccount": "Already have an account? Login",
     "welcome": "Welcome back!",
     "signOut": "Sign out",
     "signIn": "Sign in",
+    "register": "Register",
     "fields": {
       "email": {
         "label": "Email",
         "placeholder": "your@email.com"
+      },
+      "password": {
+        "label": "Password",
+        "placeholder": "Your password"
       }
     },
     "magicLink": {
