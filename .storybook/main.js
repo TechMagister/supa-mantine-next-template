@@ -1,5 +1,5 @@
 module.exports = {
-  stories: ['../**/*.story.mdx', '../**/*.story.@(js|jsx|ts|tsx)'],
+  stories: ['../**/*.stories.tsx'],
   addons: [
     'storybook-dark-mode',
     {
@@ -8,4 +8,11 @@ module.exports = {
     },
   ],
   framework: '@storybook/react',
+  webpackFinal: async (config, { configType }) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      'next-i18next': 'react-i18next',
+    };
+    return config;
+  },
 };

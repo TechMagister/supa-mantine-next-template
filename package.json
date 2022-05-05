@@ -15,7 +15,7 @@
     "prettier:check": "prettier --check \"**/*.{ts,tsx}\"",
     "prettier:write": "prettier --write \"**/*.{ts,tsx}\"",
     "test": "npm run prettier:check && npm run lint && npm run typecheck && npm run jest",
-    "storybook": "start-storybook -p 7001",
+    "storybook": "start-storybook -p 7001 -s ./public",
     "storybook:build": "build-storybook"
   },
   "dependencies": {
@@ -65,6 +65,7 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "eslint-plugin-storybook": "^0.5.7",
     "eslint-plugin-testing-library": "^5.2.0",
+    "i18next-http-backend": "^1.4.0",
     "jest": "^27.5.1",
     "prettier": "^2.6.2",
     "storybook-addon-turbo-build": "^1.1.0",

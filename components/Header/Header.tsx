@@ -2,19 +2,18 @@ import React, { useState } from 'react';
 import { Container, Avatar, UnstyledButton, Group, Text, Menu, Burger } from '@mantine/core';
 import { useBooleanToggle } from '@mantine/hooks';
 import { Logout, ChevronDown } from 'tabler-icons-react';
-import { User } from '@supabase/supabase-js';
 import { useTranslation } from 'next-i18next';
 import { Logo } from '../../shared/Logo';
 
 import useStyles from './Header.styles';
 
 interface HeaderTabsProps {
-  user: User | null;
+  user: { email: string };
   onLogout: () => void;
 }
 
 export default function Header({ user, onLogout }: HeaderTabsProps) {
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
   const { classes, cx } = useStyles();
   const [opened, toggleOpened] = useBooleanToggle(false);
   const [userMenuOpened, setUserMenuOpened] = useState(false);

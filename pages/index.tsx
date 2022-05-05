@@ -1,5 +1,5 @@
 import { LoadingOverlay, Modal } from '@mantine/core';
-import { GetStaticProps, NextPage } from 'next';
+import { GetServerSideProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { supabaseClient } from '@supabase/supabase-auth-helpers/nextjs';
 import { useState } from 'react';
@@ -62,7 +62,7 @@ const HomePage: NextPage<HomePageProps> = () => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => ({
+export const getServerSideProps: GetServerSideProps = async ({ locale }) => ({
   props: {
     ...(await serverSideTranslations(locale || 'en', ['common'])),
   },
