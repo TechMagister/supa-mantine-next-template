@@ -1,9 +1,16 @@
 ﻿{
   "login": {
-    "welcome": "Welcome back!",
-    "signOut": "Sign out",
+    "welcome": "С возвращением",
+    "signOut": "Выход",
+    "signIn": "Войти",
+    "fields": {
+      "email": {
+        "label": "Эл. адрес",
+        "placeholder": "ваш@адрес.ru"
+      }
+    },
     "magicLink": {
-      "postLoginModal": "Check your email for the login link!"
+      "postLoginModal": "Проверьте свою почту на наличие ссылки для входа!"
     }
   }
 }
