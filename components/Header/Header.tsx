@@ -13,7 +13,7 @@ import routes from '../../shared/routes';
 import useStyles from './Header.styles';
 
 interface HeaderTabsProps {
-  user: { email?: string };
+  user?: { email: string } | null;
   onLogout: () => void;
 }
 
