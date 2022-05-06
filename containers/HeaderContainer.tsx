@@ -11,5 +11,5 @@ export default function HeaderContainer() {
 
   const onLogout = useCallback(() => router.replace('/api/auth/logout'), []);
 
-  return <Header user={user} onLogout={onLogout} />;
+  return <Header user={{email: user?.email }} onLogout={onLogout} />;
 }

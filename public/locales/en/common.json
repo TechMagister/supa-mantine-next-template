@@ -1,4 +1,7 @@
 ﻿{
+  "global": {
+    "home": "Home"
+  },
   "login": {
     "alreadyHaveAccount": "Already have an account? Login",
     "welcome": "Welcome back!",

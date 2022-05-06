@@ -4,6 +4,7 @@ import { useTranslation } from 'next-i18next';
 
 import { Avatar, Burger, Container, Group, Menu, Text, UnstyledButton } from '@mantine/core';
 import { useBooleanToggle } from '@mantine/hooks';
+import { NextLink } from '@mantine/next';
 
 import { ChevronDown, Logout } from 'tabler-icons-react';
 
@@ -11,7 +12,7 @@ import { Logo } from '../../shared/Logo';
 import useStyles from './Header.styles';
 
 interface HeaderTabsProps {
-  user: { email: string };
+  user: { email?: string };
   onLogout: () => void;
 }
 
@@ -25,7 +26,9 @@ export default function Header({ user, onLogout }: HeaderTabsProps) {
     <div className={classes.header}>
       <Container className={classes.mainSection}>
         <Group position="apart">
-          <Logo />
+          <NextLink href="/" title={t('global.home')}>
+            <Logo />
+          </NextLink>
 
           <Burger
             opened={opened}
