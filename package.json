@@ -15,7 +15,7 @@
     "prettier:check": "prettier --check \"**/*.{ts,tsx}\"",
     "prettier:write": "prettier --write \"**/*.{ts,tsx}\"",
     "test": "npm run prettier:check && npm run lint && npm run typecheck && npm run jest",
-    "storybook": "start-storybook -p 7001 -s ./public",
+    "storybook": "start-storybook -p 7001",
     "storybook:build": "build-storybook"
   },
   "dependencies": {
@@ -43,7 +43,8 @@
   "devDependencies": {
     "@babel/core": "^7.17.8",
     "@next/eslint-plugin-next": "^12.1.4",
-    "@storybook/react": "^6.4.20",
+    "@storybook/addon-essentials": "^6.4.22",
+    "@storybook/react": "^6.4.22",
     "@testing-library/dom": "^8.12.0",
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^13.0.0",
@@ -63,13 +64,13 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.3.0",
-    "eslint-plugin-storybook": "^0.5.7",
+    "eslint-plugin-storybook": "^0.5.11",
     "eslint-plugin-testing-library": "^5.2.0",
     "i18next-http-backend": "^1.4.0",
     "jest": "^27.5.1",
     "prettier": "^2.6.2",
     "storybook-addon-turbo-build": "^1.1.0",
-    "storybook-dark-mode": "^1.0.9",
+    "storybook-dark-mode": "^1.1.0",
     "ts-jest": "^27.1.4",
     "typescript": "4.6.3"
   }

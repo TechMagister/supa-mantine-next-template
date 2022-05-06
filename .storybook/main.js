@@ -1,6 +1,8 @@
 module.exports = {
+  staticDirs: ['../public'],
   stories: ['../**/*.stories.tsx'],
   addons: [
+    '@storybook/addon-essentials',
     'storybook-dark-mode',
     {
       name: 'storybook-addon-turbo-build',
