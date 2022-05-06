@@ -1,3 +1,3 @@
 export default {
-  BRAND: 'Tech Magister',
+  BRAND: 'Mantine.dev',
 };
