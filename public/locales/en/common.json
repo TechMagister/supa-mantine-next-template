@@ -5,7 +5,7 @@
     "signOut": "Sign out",
     "signIn": "Sign in",
     "register": "Register",
-    "accountCreated": "Compte crée avec succès, confirmez votre email pour vous connecter.",
+    "accountCreated": "Account created, please check your email for confirmation.",
     "fields": {
       "email": {
         "label": "Email",
