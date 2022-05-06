@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import { Container, Avatar, UnstyledButton, Group, Text, Menu, Burger } from '@mantine/core';
-import { useBooleanToggle } from '@mantine/hooks';
-import { Logout, ChevronDown } from 'tabler-icons-react';
-import { useTranslation } from 'next-i18next';
-import { Logo } from '../../shared/Logo';
 
+import { useTranslation } from 'next-i18next';
+
+import { Avatar, Burger, Container, Group, Menu, Text, UnstyledButton } from '@mantine/core';
+import { useBooleanToggle } from '@mantine/hooks';
+
+import { ChevronDown, Logout } from 'tabler-icons-react';
+
+import { Logo } from '../../shared/Logo';
 import useStyles from './Header.styles';
 
 interface HeaderTabsProps {

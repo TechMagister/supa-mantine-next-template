@@ -1,10 +1,15 @@
-﻿import { GetServerSideProps, NextPage } from 'next';
-import { Container, LoadingOverlay, Title } from '@mantine/core';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+﻿import { useState } from 'react';
+
+import { GetServerSideProps, NextPage } from 'next';
 import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useRouter } from 'next/router';
+
 import { supabaseClient } from '@supabase/supabase-auth-helpers/nextjs';
-import { useState } from 'react';
+
+import { Container, LoadingOverlay, Title } from '@mantine/core';
 import { showNotification } from '@mantine/notifications';
+
 import RegisterForm, { RegisterFormEntity } from '../../components/RegisterForm/RegisterForm';
 
 async function signUp({ email, password }: { email: string; password: string }) {
@@ -15,10 +20,9 @@ async function signUp({ email, password }: { email: string; password: string }) 
   return { user, error };
 }
 
-function onGotoLogin() {}
-
 const RegisterPage: NextPage = () => {
   const { t } = useTranslation();
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isRegistered, setIsRegistered] = useState<boolean>(false);
 
@@ -41,6 +45,10 @@ const RegisterPage: NextPage = () => {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const onGotoLogin = async () => {
+    await router.replace('/');
   };
 
   return (

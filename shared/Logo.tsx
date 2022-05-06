@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { useMantineTheme } from '@mantine/core';
 
 interface MantineLogoProps extends React.ComponentPropsWithoutRef<'svg'> {

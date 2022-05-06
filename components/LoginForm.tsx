@@ -1,7 +1,9 @@
-﻿import { Button, Container, Paper, TextInput, Title } from '@mantine/core';
+﻿import { useTranslation } from 'next-i18next';
+
+import { Button, Container, Paper, TextInput, Title } from '@mantine/core';
 import { useForm, zodResolver } from '@mantine/form';
+
 import { z } from 'zod';
-import { useTranslation } from 'next-i18next';
 
 export interface LoginFormEntity {
   email?: string;

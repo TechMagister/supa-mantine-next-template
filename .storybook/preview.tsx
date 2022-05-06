@@ -1,9 +1,12 @@
-import { useDarkMode } from 'storybook-dark-mode';
-import { MantineProvider, ColorSchemeProvider } from '@mantine/core';
-import { NotificationsProvider } from '@mantine/notifications';
-import { I18nextProvider } from 'react-i18next';
-import i18n from './i18n';
 import { Suspense } from 'react';
+
+import { ColorSchemeProvider, MantineProvider } from '@mantine/core';
+import { NotificationsProvider } from '@mantine/notifications';
+
+import { I18nextProvider } from 'react-i18next';
+import { useDarkMode } from 'storybook-dark-mode';
+
+import i18n from './i18n';
 
 //export const parameters = { layout: 'fullscreen' };
 

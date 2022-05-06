@@ -1,7 +1,10 @@
-﻿import { useTranslation } from 'next-i18next';
-import { FC } from 'react';
-import { useForm, zodResolver } from '@mantine/form';
+﻿import { FC } from 'react';
+
+import { useTranslation } from 'next-i18next';
+
 import { Anchor, Button, Group, Paper, PaperProps, PasswordInput, TextInput } from '@mantine/core';
+import { useForm, zodResolver } from '@mantine/form';
+
 import { registerFormSchema } from '../../shared/schema/registerForm';
 
 interface RegisterFormProps {

@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-shadow */
-import React, { useEffect, useState, createContext, useContext, useCallback, useRef } from 'react';
+import React, { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
+
 import { SupabaseClient, User } from '@supabase/supabase-js';
 
 export type UserState = {

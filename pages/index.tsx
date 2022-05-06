@@ -1,13 +1,17 @@
-import { LoadingOverlay, Modal } from '@mantine/core';
-import { GetServerSideProps, NextPage } from 'next';
-import { useRouter } from 'next/router';
-import { supabaseClient } from '@supabase/supabase-auth-helpers/nextjs';
 import { useState } from 'react';
-import { showNotification } from '@mantine/notifications';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+
+import { GetServerSideProps, NextPage } from 'next';
 import { useTranslation } from 'next-i18next';
-import { useUser } from '../components/UserProvider';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useRouter } from 'next/router';
+
+import { supabaseClient } from '@supabase/supabase-auth-helpers/nextjs';
+
+import { LoadingOverlay, Modal } from '@mantine/core';
+import { showNotification } from '@mantine/notifications';
+
 import LoginForm, { LoginFormEntity } from '../components/LoginForm';
+import { useUser } from '../components/UserProvider';
 
 interface HomePageProps {}
 

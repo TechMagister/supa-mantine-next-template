@@ -1,14 +1,20 @@
-import { GetServerSidePropsContext } from 'next';
 import { useState } from 'react';
-import { AppProps } from 'next/app';
-import { getCookie, setCookies } from 'cookies-next';
-import Head from 'next/head';
-import { MantineProvider, ColorScheme, ColorSchemeProvider, Container } from '@mantine/core';
-import { NotificationsProvider } from '@mantine/notifications';
-import { getUser, supabaseClient } from '@supabase/supabase-auth-helpers/nextjs';
-import { useRouter } from 'next/router';
-import { User } from '@supabase/supabase-js';
+
+import { GetServerSidePropsContext } from 'next';
 import { appWithTranslation } from 'next-i18next';
+import { AppProps } from 'next/app';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+
+import { getUser, supabaseClient } from '@supabase/supabase-auth-helpers/nextjs';
+import { User } from '@supabase/supabase-js';
+
+import { ColorScheme, ColorSchemeProvider, Container, MantineProvider } from '@mantine/core';
+import { NotificationsProvider } from '@mantine/notifications';
+
+import { getCookie, setCookies } from 'cookies-next';
+
+import Footer from '../components/Footer/Footer';
 import { UserProvider } from '../components/UserProvider';
 import HeaderContainer from '../containers/HeaderContainer';
 
@@ -39,6 +45,7 @@ function MyApp(props: AppProps & { colorScheme: ColorScheme; user?: User }) {
               <Container>
                 <Component {...pageProps} />
               </Container>
+              <Footer data={[]} />
             </UserProvider>
           </NotificationsProvider>
         </MantineProvider>

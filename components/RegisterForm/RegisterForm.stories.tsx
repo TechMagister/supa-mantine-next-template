@@ -1,4 +1,5 @@
 ﻿import { ComponentStory } from '@storybook/react';
+
 import RegisterForm from './RegisterForm';
 
 export default {

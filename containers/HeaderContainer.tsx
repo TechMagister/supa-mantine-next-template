@@ -1,5 +1,7 @@
-﻿import { useRouter } from 'next/router';
-import { useCallback } from 'react';
+﻿import { useCallback } from 'react';
+
+import { useRouter } from 'next/router';
+
 import Header from '../components/Header/Header';
 import { useUser } from '../components/UserProvider';
 
