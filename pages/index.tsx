@@ -12,6 +12,7 @@ import { showNotification } from '@mantine/notifications';
 
 import LoginForm, { LoginFormEntity } from '../components/LoginForm';
 import { useUser } from '../components/UserProvider';
+import routes from '../shared/routes';
 
 interface HomePageProps {}
 
@@ -56,7 +57,7 @@ const HomePage: NextPage<HomePageProps> = () => {
   return (
     (user && (
       <>
-        <button type="button" onClick={() => router.replace('/api/auth/logout')}>
+        <button type="button" onClick={() => router.replace(routes.LOGOUT)}>
           {t('login.signOut')}
         </button>
         <p>user:</p>

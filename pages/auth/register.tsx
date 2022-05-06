@@ -11,6 +11,7 @@ import { Container, LoadingOverlay, Title } from '@mantine/core';
 import { showNotification } from '@mantine/notifications';
 
 import RegisterForm, { RegisterFormEntity } from '../../components/RegisterForm/RegisterForm';
+import routes from '../../shared/routes';
 
 async function signUp({ email, password }: { email: string; password: string }) {
   const { user, error } = await supabaseClient.auth.signUp({
@@ -48,7 +49,7 @@ const RegisterPage: NextPage = () => {
   };
 
   const onGotoLogin = async () => {
-    await router.replace('/');
+    await router.replace(routes.LOGIN);
   };
 
   return (

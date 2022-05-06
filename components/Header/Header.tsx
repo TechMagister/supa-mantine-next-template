@@ -9,6 +9,7 @@ import { NextLink } from '@mantine/next';
 import { ChevronDown, Logout } from 'tabler-icons-react';
 
 import { Logo } from '../../shared/Logo';
+import routes from '../../shared/routes';
 import useStyles from './Header.styles';
 
 interface HeaderTabsProps {
@@ -26,7 +27,7 @@ export default function Header({ user, onLogout }: HeaderTabsProps) {
     <div className={classes.header}>
       <Container className={classes.mainSection}>
         <Group position="apart">
-          <NextLink href="/" title={t('global.home')}>
+          <NextLink href={routes.HOME} title={t('global.home')}>
             <Logo />
           </NextLink>
 
