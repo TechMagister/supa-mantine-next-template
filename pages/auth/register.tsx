@@ -17,10 +17,10 @@ async function signUp({ email, password }: { email: string; password: string }) 
 
 function onGotoLogin() {}
 
-// TODO: i18n
 const RegisterPage: NextPage = () => {
   const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isRegistered, setIsRegistered] = useState<boolean>(false);
 
   const onSubmit = async ({ email, password }: RegisterFormEntity) => {
     try {
@@ -29,13 +29,7 @@ const RegisterPage: NextPage = () => {
       // eslint-disable-next-line @typescript-eslint/no-throw-literal
       if (error) throw error;
       else {
-        showNotification({
-          title: 'Compte créé',
-          // @ts-ignore
-          message: 'Compte crée avec succès, confirmez votre email pour vous connecter.',
-          color: 'green',
-          autoClose: false,
-        });
+        setIsRegistered(true);
       }
     } catch (error) {
       showNotification({
@@ -58,7 +52,11 @@ const RegisterPage: NextPage = () => {
       >
         {t('login.register')}
       </Title>
-      <RegisterForm onRegister={onSubmit} onGoToLogin={onGotoLogin} mt={30} />
+      {isRegistered ? (
+        t('login.accountCreated')
+      ) : (
+        <RegisterForm onRegister={onSubmit} onGoToLogin={onGotoLogin} mt={30} />
+      )}
     </Container>
   );
 };
