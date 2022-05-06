@@ -1,10 +1,13 @@
 import React from 'react';
 
+import { useTranslation } from 'next-i18next';
+
 import { ActionIcon, Container, Group, Text } from '@mantine/core';
 
 import { BrandInstagram, BrandTwitter, BrandYoutube } from 'tabler-icons-react';
 
 import { Logo } from '../../shared/Logo';
+import config from '../../shared/config';
 import useStyles from './Footer.styles';
 
 interface FooterLinksProps {
@@ -14,8 +17,8 @@ interface FooterLinksProps {
   }[];
 }
 
-// TODO: i18n
 export default function Footer({ data }: FooterLinksProps) {
+  const { t } = useTranslation();
   const { classes } = useStyles();
   const groups = data.map((group) => {
     const links = group.links.map((link, index) => (
@@ -43,14 +46,14 @@ export default function Footer({ data }: FooterLinksProps) {
         <div className={classes.logo}>
           <Logo />
           <Text size="xs" color="dimmed" className={classes.description}>
-            Build fully functional accessible web applications faster than ever
+            {t('footer.phrase')}
           </Text>
         </div>
         <div className={classes.groups}>{groups}</div>
       </Container>
       <Container className={classes.afterFooter}>
         <Text color="dimmed" size="sm">
-          © 2020 mantine.dev. All rights reserved.
+          © 2022 {config.BRAND}. {t('footer.allRightReserved')}
         </Text>
 
         <Group spacing={0} className={classes.social} position="right" noWrap>

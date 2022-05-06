@@ -22,5 +22,9 @@
     "magicLink": {
       "postLoginModal": "Check your email for the login link!"
     }
+  },
+  "footer": {
+    "allRightReserved": "All rights reserved",
+    "phrase": "Build fully functional accessible web applications faster than ever"
   }
 }
