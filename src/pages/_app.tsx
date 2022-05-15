@@ -17,6 +17,7 @@ import { getCookie, setCookies } from 'cookies-next';
 import Footer from '../components/Footer/Footer';
 import { UserProvider } from '../components/UserProvider';
 import HeaderContainer from '../containers/HeaderContainer';
+import {TITLE} from "../shared/config";
 
 function MyApp(props: AppProps & { colorScheme: ColorScheme; user?: User }) {
   const { Component, pageProps, user } = props;
@@ -32,7 +33,7 @@ function MyApp(props: AppProps & { colorScheme: ColorScheme; user?: User }) {
   return (
     <>
       <Head>
-        <title>Mantine next example</title>
+        <title>{TITLE}</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
         <link rel="shortcut icon" href="/favicon.svg" />
       </Head>

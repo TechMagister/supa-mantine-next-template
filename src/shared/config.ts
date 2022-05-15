@@ -1,3 +1,2 @@
-export default {
-  BRAND: 'Mantine.dev',
-};
+export const TITLE = 'Template';
+export const BRAND = 'Mantine.dev';

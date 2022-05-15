@@ -7,7 +7,7 @@ import { ActionIcon, Container, Group, Text } from '@mantine/core';
 import { BrandInstagram, BrandTwitter, BrandYoutube } from 'tabler-icons-react';
 
 import { Logo } from '../../shared/Logo';
-import config from '../../shared/config';
+import {BRAND} from '../../shared/config';
 import useStyles from './Footer.styles';
 
 interface FooterLinksProps {
@@ -53,7 +53,7 @@ export default function Footer({ data }: FooterLinksProps) {
       </Container>
       <Container className={classes.afterFooter}>
         <Text color="dimmed" size="sm">
-          © 2022 {config.BRAND}. {t('footer.allRightReserved')}
+          © 2022 {BRAND}. {t('footer.allRightReserved')}
         </Text>
 
         <Group spacing={0} className={classes.social} position="right" noWrap>
