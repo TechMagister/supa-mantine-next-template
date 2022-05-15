@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {StrictMode, useState } from 'react';
 
 import { GetServerSidePropsContext } from 'next';
 import { appWithTranslation } from 'next-i18next';
@@ -31,7 +31,7 @@ function MyApp(props: AppProps & { colorScheme: ColorScheme; user?: User }) {
   };
 
   return (
-    <>
+    <StrictMode>
       <Head>
         <title>{TITLE}</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
@@ -51,7 +51,7 @@ function MyApp(props: AppProps & { colorScheme: ColorScheme; user?: User }) {
           </NotificationsProvider>
         </MantineProvider>
       </ColorSchemeProvider>
-    </>
+    </StrictMode>
   );
 }
 
