@@ -11,8 +11,9 @@ import { LoadingOverlay, Modal } from '@mantine/core';
 import { showNotification } from '@mantine/notifications';
 
 import LoginForm, { LoginFormEntity } from '../components/LoginForm';
-import { useUser } from '../components/UserProvider';
+
 import routes from '../shared/routes';
+import {useUser} from "@supabase/supabase-auth-helpers/react";
 
 interface HomePageProps {}
 

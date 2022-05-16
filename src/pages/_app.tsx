@@ -1,4 +1,4 @@
-import {StrictMode, useState } from 'react';
+import { StrictMode, useState } from 'react';
 
 import { GetServerSidePropsContext } from 'next';
 import { appWithTranslation } from 'next-i18next';
@@ -6,7 +6,8 @@ import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-import { getUser, supabaseClient } from '@supabase/supabase-auth-helpers/nextjs';
+import { UserProvider } from '@supabase/supabase-auth-helpers/react';
+import { getUser, supabaseClient,  } from '@supabase/supabase-auth-helpers/nextjs';
 import { User } from '@supabase/supabase-js';
 
 import { ColorScheme, ColorSchemeProvider, Container, MantineProvider } from '@mantine/core';
@@ -15,9 +16,8 @@ import { NotificationsProvider } from '@mantine/notifications';
 import { getCookie, setCookies } from 'cookies-next';
 
 import Footer from '../components/Footer/Footer';
-import { UserProvider } from '../components/UserProvider';
 import HeaderContainer from '../containers/HeaderContainer';
-import {TITLE} from "../shared/config";
+import { TITLE } from '../shared/config';
 
 function MyApp(props: AppProps & { colorScheme: ColorScheme; user?: User }) {
   const { Component, pageProps, user } = props;
